@@ -1,13 +1,31 @@
 var name = 'Federico';
 var role = 'udacity code reviwer';
 
+var bio = {
+    'name' : 'Federico',
+    'role' : 'Udacity Code Reviewer',
+    'contacts' : 'federicocapaldo@yahoo.co.uk',
+    'skills' : [
+    'programming', 'python', 'javascript', 'rails', 'java', 'html', 'css', 'ux'
+    ],
+    'welcomeMessage' : 'Welcome on my Resume!',
+    'bioPic': 'images/fry.jpg'
+};
 
-var formattedName =
-    HTMLheaderName.replace('%data%', bio.name);
-var formattedRole =
-    HTMLheaderRole.replace('%data%', bio.role);
-var formattedWelcome = HTML
+$('#main').append(bio.name);
 
+work = {
+    'company': 'Secret Web Developer Company',
+    'year': '2015 - 2016',
+    'position': 'Web Developer Intern',
+    'city': 'London, UK'
+};
 
-$('#header').prepend(formattedRole);
-$('#header').prepend(formattedName);
+var education = {
+    'name': 'King\'s College London',
+    'years': '2014 - 2017',
+    'city': 'London, UK'
+};
+
+$('#main').append(work['position']);
+$('#main').append(education.name);

@@ -3,7 +3,7 @@ var bio = {
   "role" : "Udacity Code Reviewer",
   "contacts" : "federicocapaldo@yahoo.co.uk",
   "skills" : [
-  "programming", "python", "javascript", "rails", "java", "html", "css", "ux"
+    "python", "javascript", "ruby on rails", "java", "html", "css", "ux"
   ],
   "welcomeMessage" : "Welcome on my Resume!",
   "bioPic": "images/fry.jpg"
@@ -49,8 +49,35 @@ var education = {
 
 var projects = {
   "projects": [
-    "title": "Chemical Trace",
-    "dates": "2015/2016",
-    "description": "First Website in the world that helps you understand the content of your labels"
+    {
+      "title": "Chemical Trace",
+      "dates": "2015/2016",
+      "description": "First Website in the world that helps you understand the content of your labels"
+    }
   ]
+}
+
+
+if(bio.skills.length > 0) {
+  $('#header').append(HTMLskillsStart);
+
+  var formattedSkills = HTMLskills.replace("%data%", bio.skills[0]);
+  $('#skills').append(formattedSkills);
+  var formattedSkills = HTMLskills.replace("%data%", bio.skills[1]);
+  $('#skills').append(formattedSkills);
+  var formattedSkills = HTMLskills.replace("%data%", bio.skills[2]);
+  $('#skills').append(formattedSkills);
+  var formattedSkills = HTMLskills.replace("%data%", bio.skills[3]);
+  $('#skills').append(formattedSkills);
+}
+
+
+for(job in work.jobs) {
+  $('#workExperience').append(HTMLworkStart);
+
+  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+  var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+  var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+  $('.work-entry:last').append(formattedEmployerTitle);
 }

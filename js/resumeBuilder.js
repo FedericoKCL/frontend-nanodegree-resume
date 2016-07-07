@@ -16,9 +16,16 @@ var work = {
       "employer": "Secret Web Developer Company",
       "title": "Web Developer Intern",
       "dates": "2015 - 2016",
-      "description": "started off with little of no knowledge of Web Development and endend up\
+      "description": "Started off with little of no knowledge of Web Development and endend up\
       in partecipating in important projects as a full stack web developer for clients like\
-      Tesco, Fortunm and Mason, Camdenmarket."
+      Tesco, Fortunm and Mason, Camden Market."
+    },
+    {
+      "employer": "Secret Hotel",
+      "title": "Chef",
+      "dates": "2012 - 2013",
+      "description": "Before moving to the field of technology I was a chef. I worked in very\
+      fancy places and cooked delicious meals."
     }
   ]
 };
@@ -71,13 +78,22 @@ if(bio.skills.length > 0) {
   $('#skills').append(formattedSkills);
 }
 
+function displayWork() {
+  for(job in work.jobs) {
+    $('#workExperience').append(HTMLworkStart);
 
-for(job in work.jobs) {
-  $('#workExperience').append(HTMLworkStart);
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
+    $('.work-entry:last').append(formattedEmployerTitle);
+    
+    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates)
+    $('.work-entry:last').append(formattedDates);
 
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-  var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-  var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
-  $('.work-entry:last').append(formattedEmployerTitle);
+    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+    $('.work-entry:last').append(formattedDescription);
+  }
 }
+
+displayWork();
+

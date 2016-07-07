@@ -1,5 +1,5 @@
 var bio = {
-  "name" : "Federico",
+  "name" : "Federico Capaldo",
   "role" : "Udacity Code Reviewer",
   "contacts" : "federicocapaldo@yahoo.co.uk",
   "skills" : [
@@ -64,10 +64,17 @@ var projects = {
   ]
 }
 
+var formattedName = HTMLheaderName.replace("%data%", inName(bio.name));
+$('#header').append(formattedName);
+
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$('#header').append(formattedRole);
+
+var formattedImage = HTMLbioPic.replace("%data%", bio.bioPic);
+$('#header').append(formattedImage);
 
 if(bio.skills.length > 0) {
   $('#header').append(HTMLskillsStart);
-
   var formattedSkills = HTMLskills.replace("%data%", bio.skills[0]);
   $('#skills').append(formattedSkills);
   var formattedSkills = HTMLskills.replace("%data%", bio.skills[1]);
@@ -97,3 +104,21 @@ function displayWork() {
 
 displayWork();
 
+$(document).click(function(loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+
+  logClicks(x,y);
+});
+
+
+function inName(name) {
+  parts = name.trim().split(" ");
+  newName = parts[0].slice(0,1).toUpperCase() + parts[0].slice(1).toLowerCase();
+  newSurname = parts[1].toUpperCase();
+
+  return newName + " " + newSurname;
+}
+
+
+$('#main').append(internationalizeButton);
